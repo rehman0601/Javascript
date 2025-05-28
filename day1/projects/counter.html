@@ -1,11 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Styled Counter</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f2f5;
+      font-family: Arial, sans-serif;
+    }
+
+    #Counter {
+      text-align: center;
+      background: rgb(255, 255, 255);
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #value {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 18px;
+      width: 90px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #000000;
+      transition: background 0.3s;
+    }
+    #increase{
+        background-color: rgb(205, 255, 129);
+    }
+    #decrease{
+        background-color: rgb(212, 64, 64);
+    }
+    #reset{
+        background-color: rgb(122, 187, 187);
+    }
+    
+  </style>
 </head>
 <body>
-    
+  <div id="Counter"></div>
+
+  <script>
+    const counterDiv = document.getElementById('Counter');
+    counterDiv.innerHTML = `
+      <h2 id="value">0</h2>
+      <button id="increase">+</button>
+      <button id="decrease">-</button>
+      <button id="reset">Reset</button>
+    `;
+
+    let count = 0;
+    const value = document.getElementById('value');
+
+    document.getElementById('increase').addEventListener('click', () => {
+      count++;
+      value.textContent = count;
+    });
+
+    document.getElementById('decrease').addEventListener('click', () => {
+      if(count <= 0){
+        count = 0;
+        value.textContent = count;
+      }
+      else{
+        count--;
+        value.textContent = count;
+      }
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+      count = 0;
+      value.textContent = count;
+    });
+  </script>
 </body>
 </html>
