@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project 1</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 100px;
+      transition: background-color 0.5s ease;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <button id="bt">Change Color</button>
+  <h2>Current Color: <span id="colorCode">rgb(255,255,255)</span></h2>
+
+  <script>
+    const b = document.getElementById('bt');
+    const colorText = document.getElementById('colorCode');
+
+    function getRandomHexColor() {
+        const r = Math.floor(Math.random() * 256); 
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function changeColor() {
+      const randomColor = getRandomHexColor();
+      document.body.style.backgroundColor = randomColor;
+      colorText.textContent = randomColor;
+    }
+
+    b.onclick = changeColor;
+  </script>
+</body>
+</html>
